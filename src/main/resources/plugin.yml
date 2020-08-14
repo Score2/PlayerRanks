@@ -1,0 +1,10 @@
+name: ${project.name}
+version: ${project.version}
+main: me.scoretwo.playerranks.bukkit.PlayerRanks
+author: Score2
+softdepend:
+  - PlaceholderAPI
+  - KotlinAPI
+permissions:
+  playerranks.admin:
+    default: op
