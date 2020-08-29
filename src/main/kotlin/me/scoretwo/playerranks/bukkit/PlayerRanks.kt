@@ -38,6 +38,7 @@ class PlayerRanks : JavaPlugin() {
             for (rank in ranks.values) {
                 PlayerRank.playerRank[player]!!.onUpdate(rank)
             }
+
         }
 
         fun onReload() {

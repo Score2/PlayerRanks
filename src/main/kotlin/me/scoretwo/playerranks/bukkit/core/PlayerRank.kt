@@ -18,7 +18,7 @@ class PlayerRank(val player: Player) {
     }
 
     fun onUpdate(rank: Rank) {
-        val score = if (StringUtils.isNumeric(rank.expr)) PlaceholderAPI.setPlaceholders(player, rank.expr).toInt() else return
+        val score = PlaceholderAPI.setPlaceholders(player, rank.expr).toInt()
         val keys = rank.nodes.keys.toMutableList()
         val values = rank.nodes.values.toMutableList()
         keys.sort()
@@ -37,7 +37,7 @@ class PlayerRank(val player: Player) {
         }
 //        println("超出设置范围")
         ranks[rank] = rank.nodes[values.size]!!
-
+        return
     }
 
     companion object {

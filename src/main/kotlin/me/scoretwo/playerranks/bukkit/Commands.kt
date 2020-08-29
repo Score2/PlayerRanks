@@ -1,5 +1,6 @@
 package me.scoretwo.playerranks.bukkit
 
+import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 
@@ -16,6 +17,23 @@ class Commands : Command("playerRanks","","/playerRanks", listOf("pranks","pr"))
         }
 
         when(args[0]) {
+            "update" -> {
+                if (args.size != 1) {
+                    onHelp(sender)
+                    return true
+                }
+
+                val player = Bukkit.getPlayer(args[1])
+
+                if (player == null) {
+                    sender.sendMessage("§c目标玩家不在线")
+                    return true
+                }
+
+                PlayerRanks.onUpdate(player)
+                sender.sendMessage("§a操作成功")
+
+            }
             "reload" -> {
                 PlayerRanks.onReload()
                 sender.sendMessage("§a配置文件重载完成")
@@ -27,6 +45,7 @@ class Commands : Command("playerRanks","","/playerRanks", listOf("pranks","pr"))
 
     fun onHelp(sender: CommandSender) {
         sender.sendMessage("")
+        sender.sendMessage("§b/PR Update <player> - 更新一个玩家的头衔")
         sender.sendMessage("§b/PR Reload - 重新载入配置文件")
         sender.sendMessage("")
     }

@@ -7,6 +7,10 @@ import org.bukkit.entity.Player
 
 class PlaceholderAPIHook : PlaceholderExpansion() {
 
+    init {
+        instance = this
+    }
+
     override fun persist(): Boolean {
         return true
     }
@@ -34,11 +38,15 @@ class PlaceholderAPIHook : PlaceholderExpansion() {
         for (rank in playerRank.ranks.keys) {
             if (rank.name == params) {
 
-                return playerRank.ranks[rank] ?: return "&7无"
+                return playerRank.ranks[rank] ?: return "&7NONE"
             }
         }
 
-        return "&7无"
+        return "&7NONE"
+    }
+
+    companion object {
+        lateinit var instance: PlaceholderAPIHook
     }
 
 }

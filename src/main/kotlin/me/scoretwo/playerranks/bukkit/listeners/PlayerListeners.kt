@@ -7,6 +7,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.AsyncPlayerChatEvent
 import org.bukkit.event.player.PlayerJoinEvent
+import org.bukkit.event.player.PlayerQuitEvent
 
 class PlayerListeners : Listener {
 
@@ -18,10 +19,15 @@ class PlayerListeners : Listener {
     }
 
     @EventHandler
+    fun onExecute(e: PlayerQuitEvent) {
+        PlayerRank.playerRank.remove(e.player)
+    }
+
+    /*@EventHandler
     fun onExecute(e : PlayerJoinEvent) {
         val player = e.player
 
         PlayerRanks.onUpdate(player)
-    }
+    }*/
 
 }
