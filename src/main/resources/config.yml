@@ -1,8 +1,14 @@
 settings:
+  # Use the title instead for the title of the player outside the numerical range.
+  # 对超出数值范围玩家的称号使用该称号代替.
   unknown-instead: '&7Unknown'
 
 head_rank:
+  # count
+  # 数值
   score: '%player_level%'
+  # Format: count: tag
+  # 格式: 数值: 对应称号
   nodes:
     - "0: &2新手"
     - "50: &a猎手"
