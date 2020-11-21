@@ -11,10 +11,12 @@
 > 该插件同时需要安装 [KotlinAPI](https://www.mcbbs.net/thread-1080136-1-1.html) 才能正常运行.
 ##### Features | 特性:
 * According to the numerical judgment, change the corresponding title of the player to realize the title.
+* Support PlaceholderAPI as a data variable to promote title changes.
 * The plugin has been running on the 1.16 server for 3 months without any performance problems.
 * Configuration file nodes can ignore case.
 * The plugin is open source on GitHub under the GPLv3.0 agreement, please make sure to use the plugin in compliance with the agreement.
 * 根据数值判断改玩家对应称号, 实现头衔.
+* 支持 PlaceholderAPI 作为数据变量推动头衔变动.
 * 该插件在已有 1.16 服务器运行 3 个月之长, 无任何性能问题.
 * 配置文件节点均可忽略大小写.
 * 插件在 GitHub 以 GPLv3.0 协议开源, 请确保在遵守协议的情况下使用该插件.
