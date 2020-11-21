@@ -1,6 +1,6 @@
 package me.scoretwo.playerranks.bukkit.core
 
-import org.bukkit.configuration.ConfigurationSection
+import me.scoretwo.utils.configuration.ConfigurationSection
 import org.jetbrains.annotations.NotNull
 
 class Rank {

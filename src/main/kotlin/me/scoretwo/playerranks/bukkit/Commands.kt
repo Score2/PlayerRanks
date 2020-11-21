@@ -35,7 +35,7 @@ class Commands : Command("playerRanks","","/playerRanks", listOf("pranks","pr"))
 
             }
             "reload" -> {
-                PlayerRanks.onReload()
+                PlayerRanks.reload()
                 sender.sendMessage("§a配置文件重载完成")
             }
         }

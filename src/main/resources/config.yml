@@ -1,3 +1,6 @@
+settings:
+  unknown-instead: '&7Unknown'
+
 head_rank:
   score: '%player_level%'
   nodes:

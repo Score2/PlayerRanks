@@ -3,6 +3,7 @@ package me.scoretwo.playerranks.bukkit.hook
 import me.clip.placeholderapi.expansion.PlaceholderExpansion
 import me.scoretwo.playerranks.bukkit.PlayerRanks
 import me.scoretwo.playerranks.bukkit.core.PlayerRank
+import me.scoretwo.utils.configuration.patchs.getLowerCaseNode
 import org.bukkit.entity.Player
 
 class PlaceholderAPIHook : PlaceholderExpansion() {
@@ -38,11 +39,11 @@ class PlaceholderAPIHook : PlaceholderExpansion() {
         for (rank in playerRank.ranks.keys) {
             if (rank.name == params) {
 
-                return playerRank.ranks[rank] ?: return "&7NONE"
+                return playerRank.ranks[rank] ?: return PlayerRanks.config.getString(PlayerRanks.config.getLowerCaseNode("settings.unknown-instead"))
             }
         }
 
-        return "&7NONE"
+        return PlayerRanks.config.getString(PlayerRanks.config.getLowerCaseNode("settings.unknown-instead"))
     }
 
     companion object {
