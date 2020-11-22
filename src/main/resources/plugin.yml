@@ -1,6 +1,6 @@
-name: ${project.name}
-version: ${project.version}
-main: me.scoretwo.playerranks.bukkit.PlayerRanks
+name: ${name}
+version: ${version}
+main: ${main}
 author: Score2
 softdepend:
   - PlaceholderAPI
