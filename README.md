@@ -33,6 +33,7 @@
 ##### Images | 图片:
 ![](http://mc3.roselle.vip:602/plugins/playerranks/images/1.jpg)
 
+***
 
 ##### Config | 配置文件:
 ```

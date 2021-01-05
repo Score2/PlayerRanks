@@ -3,7 +3,7 @@ package me.scoretwo.playerranks.bukkit.hook
 import me.clip.placeholderapi.expansion.PlaceholderExpansion
 import me.scoretwo.playerranks.bukkit.PlayerRanks
 import me.scoretwo.playerranks.bukkit.core.PlayerRank
-import me.scoretwo.utils.configuration.patchs.getLowerCaseNode
+import me.scoretwo.utils.bukkit.configuration.yaml.patchs.*
 import org.bukkit.entity.Player
 
 class PlaceholderAPIHook : PlaceholderExpansion() {

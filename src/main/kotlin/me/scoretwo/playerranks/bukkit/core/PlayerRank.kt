@@ -18,7 +18,7 @@ class PlayerRank(val player: Player) {
     }
 
     fun onUpdate(rank: Rank) {
-        val score = PlaceholderAPI.setPlaceholders(player, rank.expr).toInt()
+        val score = PlaceholderAPI.setPlaceholders(player, rank.expr).toDouble()
         val keys = rank.nodes.keys.toMutableList()
         val values = rank.nodes.values.toMutableList()
         keys.sort()

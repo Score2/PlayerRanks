@@ -5,8 +5,8 @@ import me.scoretwo.playerranks.bukkit.core.Rank
 import me.scoretwo.playerranks.bukkit.hook.PlaceholderAPIHook
 import me.scoretwo.playerranks.bukkit.listeners.OtherListeners
 import me.scoretwo.playerranks.bukkit.listeners.PlayerListeners
-import me.scoretwo.utils.configuration.file.YamlConfiguration
-import me.scoretwo.utils.configuration.patchs.loadConfiguration
+import me.scoretwo.utils.bukkit.configuration.yaml.file.YamlConfiguration
+import me.scoretwo.utils.bukkit.configuration.yaml.patchs.loadConfiguration
 import org.bukkit.Bukkit
 import org.bukkit.command.CommandMap
 import org.bukkit.command.SimpleCommandMap
@@ -21,7 +21,8 @@ class PlayerRanks : JavaPlugin() {
 
         reload()
 
-        PlaceholderAPIHook().register()
+        if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI"))
+            PlaceholderAPIHook().register()
         getCommandMap().register("PlayerRanks",Commands())
         Bukkit.getPluginManager().registerEvents(OtherListeners(), this)
         Bukkit.getPluginManager().registerEvents(PlayerListeners(), this)
