@@ -11,7 +11,7 @@ class Rank {
 
     constructor(section : ConfigurationSection?, name: String) {
 //        println("[PlayerRanks | Debug] 尝试导入 ${name}!")
-        this.nodes = HashMap()
+        this.nodes = mutableMapOf()
         this.name = name
         expr = section!!.getString("score")!!
 

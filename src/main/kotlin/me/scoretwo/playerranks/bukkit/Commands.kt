@@ -30,12 +30,12 @@ class Commands : Command("playerRanks","","/playerRanks", listOf("pranks","pr"))
                     return true
                 }
 
-                PlayerRanks.onUpdate(player)
+                onUpdate(player)
                 sender.sendMessage("§a操作成功")
 
             }
             "reload" -> {
-                PlayerRanks.reload()
+                reload()
                 sender.sendMessage("§a配置文件重载完成")
             }
         }

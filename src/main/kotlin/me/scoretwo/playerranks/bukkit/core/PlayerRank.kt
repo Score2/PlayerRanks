@@ -1,10 +1,8 @@
 package me.scoretwo.playerranks.bukkit.core
 
 import me.clip.placeholderapi.PlaceholderAPI
-import me.scoretwo.playerranks.bukkit.PlayerRanks
-import org.apache.commons.lang3.StringUtils
+import me.scoretwo.playerranks.bukkit.allRanks
 import org.bukkit.entity.Player
-import java.util.*
 import kotlin.collections.HashMap
 
 class PlayerRank(val player: Player) {
@@ -12,21 +10,24 @@ class PlayerRank(val player: Player) {
     val ranks : MutableMap<Rank, String> = HashMap()
 
     init {
-        for (rank in PlayerRanks.ranks.values) {
+        for (rank in allRanks.values) {
             onUpdate(rank)
         }
     }
 
     fun onUpdate(rank: Rank) {
-        val score = PlaceholderAPI.setPlaceholders(player, rank.expr).toDouble()
-        val keys = rank.nodes.keys.toMutableList()
-        val values = rank.nodes.values.toMutableList()
-        keys.sort()
+        val score = PlaceholderAPI.setPlaceholders(player, rank.expr).toInt()
+        val sortedNode = rank.nodes.entries.sortedBy { it.key }.associateBy({ it.key }, { it.value })
+        val keys = sortedNode.keys.toList()
+        val values = sortedNode.values.toList()
+
+        if (score < keys[0]) {
+            ranks[rank] = values[0]
+        }
+
 //        println("尝试对 ${player.name} 进行数据更新: $score")
-        for (i in 0 until keys.size) {
-            if (i == keys.size - 1) {
-                ranks[rank] = rank.nodes[i]!!
-            }
+        for (i in keys.indices) {
+            if (i == keys.size - 1) ranks[rank] = values[keys.size - 1]
 //            println("   $i ${keys[i]} ${rank.nodes[i]}")
 //            println("   key: ${keys[i]}, key+1: ${keys[i+1]}")
             if (score >= keys[i] && score < keys[i + 1]) {
@@ -36,13 +37,9 @@ class PlayerRank(val player: Player) {
             }
         }
 //        println("超出设置范围")
-        ranks[rank] = rank.nodes[values.size]!!
+        ranks[rank] = rank.nodes[keys[values.size]]!!
         return
     }
 
-    companion object {
-        val playerRank : MutableMap<Player, PlayerRank> = HashMap()
-
-    }
-
 }
+val playersRank = mutableMapOf<Player, PlayerRank>()

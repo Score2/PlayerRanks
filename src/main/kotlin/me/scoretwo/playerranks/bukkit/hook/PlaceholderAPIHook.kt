@@ -1,15 +1,17 @@
 package me.scoretwo.playerranks.bukkit.hook
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion
-import me.scoretwo.playerranks.bukkit.PlayerRanks
+import me.scoretwo.playerranks.bukkit.config
 import me.scoretwo.playerranks.bukkit.core.PlayerRank
+import me.scoretwo.playerranks.bukkit.core.playersRank
+import me.scoretwo.playerranks.bukkit.instance
 import me.scoretwo.utils.bukkit.configuration.yaml.patchs.*
 import org.bukkit.entity.Player
 
 class PlaceholderAPIHook : PlaceholderExpansion() {
 
     init {
-        instance = this
+        papiHook = this
     }
 
     override fun persist(): Boolean {
@@ -17,37 +19,34 @@ class PlaceholderAPIHook : PlaceholderExpansion() {
     }
 
     override fun getVersion(): String {
-        return PlayerRanks.instance.description.version
+        return instance.description.version
     }
 
     override fun getAuthor(): String {
-        return PlayerRanks.instance.description.authors.toString()
+        return instance.description.authors.toString()
     }
 
     override fun getIdentifier(): String {
-        return PlayerRanks.instance.description.name
+        return instance.description.name
     }
 
     override fun onPlaceholderRequest(player: Player, params: String): String {
 
-        if (!PlayerRank.playerRank.containsKey(player)) {
-            PlayerRank.playerRank[player] = PlayerRank(player)
+        if (!playersRank.containsKey(player)) {
+            playersRank[player] = PlayerRank(player)
         }
 
-        val playerRank = PlayerRank.playerRank[player]!!
+        val playerRank = playersRank[player]!!
 
         for (rank in playerRank.ranks.keys) {
             if (rank.name == params) {
 
-                return playerRank.ranks[rank] ?: return PlayerRanks.config.getString(PlayerRanks.config.getLowerCaseNode("settings.unknown-instead"))
+                return playerRank.ranks[rank] ?: return config.getString(config.getLowerCaseNode("settings.unknown-instead"))
             }
         }
 
-        return PlayerRanks.config.getString(PlayerRanks.config.getLowerCaseNode("settings.unknown-instead"))
-    }
-
-    companion object {
-        lateinit var instance: PlaceholderAPIHook
+        return config.getString(config.getLowerCaseNode("settings.unknown-instead"))
     }
 
 }
+lateinit var papiHook: PlaceholderAPIHook
