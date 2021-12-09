@@ -1,3 +1,4 @@
+> 该项目暂时被搁置, 未来可能被重构
 ### PlayerRanks *-* 玩家头衔
 ![](https://img.shields.io/github/license/Score2/PlayerRanks?color=blue&style=for-the-badge)
 ![](https://img.shields.io/github/downloads/Score2/PlayerRanks/total?color=green&style=for-the-badge)
